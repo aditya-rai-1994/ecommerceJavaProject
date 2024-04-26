@@ -4,6 +4,7 @@ import dev.aditya.ecommercejavaproject.Exception.productNotFound;
 import dev.aditya.ecommercejavaproject.dtos.productRequestDto;
 import dev.aditya.ecommercejavaproject.models.product;
 import dev.aditya.ecommercejavaproject.service.productService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.List;
 public class productController {
     private productService prodService;
         // Dependency Injection
-    public productController(productService prodService) {
+    public productController(@Qualifier("dbProductService") productService prodService) {
         this.prodService = prodService;
     }
         // Get Particular product Details based on id

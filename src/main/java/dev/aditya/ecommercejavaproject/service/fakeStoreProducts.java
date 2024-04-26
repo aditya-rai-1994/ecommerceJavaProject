@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+@Service("fakeStoreProducts")
 public class fakeStoreProducts implements productService{
     public RestTemplate restTemplate;
     public fakeStoreProducts(RestTemplate restTemplate){
@@ -51,7 +51,8 @@ public class fakeStoreProducts implements productService{
     }
     @Override
     public List<String> getAllCategories() throws productNotFound {
-        String[] categories=restTemplate.getForObject("https://fakestoreapi.com/products/categories",String[].class);
+        String[] categories=restTemplate.getForObject(
+                "https://fakestoreapi.com/products/categories",String[].class);
         if(categories==null){
             throw new productNotFound("Categories is empty. please add category");
         }
